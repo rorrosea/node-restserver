@@ -13,8 +13,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
-app.use(require('./routes/usuario'));
+// Rutas
+app.use(require('./routes/index'));
 
+
+// Conexion de Base de Datos Mongo
 mongoose.connect( process.env.URLDB,
                  {  useUnifiedTopology: true, 
                     useNewUrlParser: true, 
