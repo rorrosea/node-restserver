@@ -13,7 +13,7 @@ app.get('/producto', verificaToken ,(req, res) => {
     let desde = req.query.desde || 0;
     desde = Number(desde);
 
-    Producto.findById({ disponible: true })
+    Producto.find({ disponible: true })
             .skip( desde )
             .limit( 5 )
             .populate('usuario', 'nombre email')
@@ -81,7 +81,7 @@ app.get('/productos/buscar/:termino', verificaToken ,(req, res) => {
 
     let expresionRegular = new RegExp( termino, 'i');
 
-    Producto.findById({ nombre: expresionRegular })
+    Producto.find({ nombre: expresionRegular })
             .populate('categoria', 'nombre')
             .exec((err, productos) => {
 
